@@ -2,6 +2,10 @@
   hosts: mysql
   become: yes
   tasks:
+  - name: Install python packages
+    ansible.builtin.pip:
+      name: PyMySQL
+
   - name: Install MYSQL Server
     ansible.builtin.package:
       name: mysql-server
@@ -19,6 +23,7 @@
       login_password: ExpenseApp@1
       login_host: 172.31.82.98
     register: mysql_info
+    ignore_errors: true
 
   - name: print the output
     ansible.builtin.debug:
