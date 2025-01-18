@@ -10,7 +10,7 @@
     
   - name: install nodejs
     ansible.builtin.package:
-      name: {{ item }}
+      name: "{{ item }}"
       state: present
     loop:
     - mysql
@@ -45,6 +45,14 @@
     ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service
+
+  - name: install python libs
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip 3.9
+    loop:
+    - PyMySQL
+    - cryptography
 
   - name: import mysql data
     community.mysql.mysql_db:
