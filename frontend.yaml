@@ -13,7 +13,7 @@
       state: started
       enabled: yes
 
- - name: delete html folder
+  - name: delete html folder
     ansible.builtin.path:
       path: /usr/share/nginx/html
       state: absent
