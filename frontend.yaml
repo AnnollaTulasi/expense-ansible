@@ -14,7 +14,7 @@
       enabled: yes
 
   - name: delete html folder
-    ansible.builtin.path:
+    ansible.builtin.file:
       path: /usr/share/nginx/html
       state: absent
 
